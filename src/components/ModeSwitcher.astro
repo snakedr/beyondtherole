@@ -1,0 +1,36 @@
+
+---
+// No server-side logic needed for the component itself
+---
+<div id="mode-switcher-container" class="sticky top-4 w-full flex justify-center z-50">
+  <button id="mode-switcher" class="px-4 py-2 rounded-full font-bold transition-all duration-300">
+    <!-- Text will be set by client-side script -->
+  </button>
+</div>
+
+<script>
+  import { $mode, toggleMode } from '../stores/mode';
+
+  const switcher = document.getElementById('mode-switcher') as HTMLButtonElement;
+  
+  function updateSwitcher(mode: 'lite' | 'think') {
+    if (mode === 'think') {
+      switcher.textContent = 'Простым языком';
+      switcher.classList.remove('bg-psyho-lite-accent', 'text-white');
+      switcher.classList.add('bg-psyho-think-accent', 'text-white');
+    } else {
+      switcher.textContent = 'Научный анализ';
+      switcher.classList.remove('bg-psyho-think-accent', 'text-white');
+      switcher.classList.add('bg-psyho-lite-accent', 'text-white');
+    }
+  }
+
+  // Set initial state
+  updateSwitcher($mode.get());
+
+  // Listen for changes
+  $mode.listen(updateSwitcher);
+
+  // Attach event listener
+  switcher.addEventListener('click', toggleMode);
+</script>

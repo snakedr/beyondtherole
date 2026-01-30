@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ModeSwitcher from '../components/ModeSwitcher.astro';
+import Card from '../components/Card.astro';
+import data from '../data/RoleFatigue_Project_Data.json';
+---
+
+<Layout title="Проект 'Усталость от роли'">
+  <ModeSwitcher />
+
+  <main class="container mx-auto p-4">
+    <header class="text-center my-12">
+      <h1 class="text-4xl font-bold think:text-5xl transition-all duration-500">Усталость от роли</h1>
+      <p class="text-xl mt-2 text-slate-600 think:text-slate-400">Профессиональная деформация как биологическая неизбежность</p>
+    </header>
+
+    <!-- Entry Point -->
+    <Card
+      title={data.entry_point.title}
+      lite={data.entry_point.lite}
+      think={data.entry_point.think}
+    />
+
+    <!-- Archetypes -->
+    <section class="my-16">
+      <h2 class="text-3xl font-bold text-center mb-8">{data.archetypes.title}</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {data.archetypes.roles.map(role => (
+          <Card
+            title={role.name}
+            lite={role.lite}
+            think={role.think}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Core Research -->
+    <section class="my-16">
+        <h2 class="text-3xl font-bold text-center mb-8">{data.core_research.title}</h2>
+        {data.core_research.screens.map(screen => (
+            <div class="bg-white think:bg-slate-800/50 p-6 rounded-lg shadow-md my-4 transition-colors duration-500">
+                <h3 class="text-2xl font-bold mb-4 text-psyho-lite-accent think:text-psyho-think-accent">{screen.title}</h3>
+                <p class="text-base leading-relaxed">{screen.content}</p>
+            </div>
+        ))}
+    </section>
+
+
+    <!-- Other sections -->
+    <Card
+      title={data.modern_context.title}
+      lite={data.modern_context.lite}
+      think={data.modern_context.think}
+    />
+
+    <Card
+        title={data.return_protocol.title}
+        lite={data.return_protocol.lite}
+        think={{
+            title: data.return_protocol.think.title,
+            content: data.return_protocol.think.steps.map(step => `<strong>${step.name}:</strong> ${step.content}`).join('<br><br>')
+        }}
+    />
+
+    <Card
+      title={data.final.title}
+      lite={data.final.lite}
+      think={data.final.think}
+    />
+
+  </main>
+</Layout>

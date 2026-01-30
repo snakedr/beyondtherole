@@ -1,0 +1,25 @@
+
+---
+export interface Props {
+  lite: string;
+  think: {
+    title: string;
+    content: string;
+  };
+  title?: string; // Optional main title for the card
+}
+
+const { lite, think, title } = Astro.props;
+---
+<div class="bg-white think:bg-slate-800/50 p-6 rounded-lg shadow-md my-4 transition-colors duration-500">
+  {title && <h2 class="text-2xl font-bold mb-4 text-psyho-lite-accent think:text-psyho-think-accent">{title}</h2>}
+  
+  <div class="block think:hidden">
+    <p class="text-lg leading-relaxed">{lite}</p>
+  </div>
+
+  <div class="hidden think:block">
+    <h3 class="text-xl font-bold mb-2">{think.title}</h3>
+    <p class="text-base leading-relaxed">{think.content}</p>
+  </div>
+</div>

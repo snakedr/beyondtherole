@@ -11,13 +11,13 @@
 </div>
 
 <script>
-  import { $mode, toggleMode } from '../stores/mode';
+  import { $isThink, toggleMode } from '../stores/app-state';
 
   const liteButton = document.getElementById('lite-button') as HTMLButtonElement;
   const thinkButton = document.getElementById('think-button') as HTMLButtonElement;
 
-  function updateButtons(mode: 'lite' | 'think') {
-    if (mode === 'think') {
+  function updateButtons(isThink: boolean) {
+    if (isThink) {
       thinkButton.classList.add('bg-white', 'text-black');
       thinkButton.classList.remove('text-white');
       liteButton.classList.remove('bg-white', 'text-black');
@@ -31,20 +31,20 @@
   }
 
   // Set initial state
-  updateButtons($mode.get());
+  updateButtons($isThink.get());
 
   // Listen for changes
-  $mode.listen(updateButtons);
+  $isThink.listen(updateButtons);
 
   // Attach event listeners
   liteButton.addEventListener('click', () => {
-    if ($mode.get() === 'think') {
+    if ($isThink.get()) {
       toggleMode();
     }
   });
 
   thinkButton.addEventListener('click', () => {
-    if ($mode.get() === 'lite') {
+    if (!$isThink.get()) {
       toggleMode();
     }
   });

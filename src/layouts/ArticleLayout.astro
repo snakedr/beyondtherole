@@ -23,9 +23,7 @@ const { title, description, ogImage } = Astro.props;
     {/* Fonts */}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=IBM+Plex+Serif:wght@400;700&family=Spectral:wght@400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/styles/theme.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Ibarra+Real+Nova:wght@400;700&family=Spectral:wght@400;700&display=swap" rel="stylesheet">
 
     {/* Open Graph / Facebook */}
     <meta property="og:type" content="article">
@@ -40,30 +38,37 @@ const { title, description, ogImage } = Astro.props;
     <meta property="twitter:title" content={title}>
     <meta property="twitter:description" content={description}>
     {ogImage && <meta property="twitter:image" content={Astro.url.origin + ogImage}>}
+    <style is:global>
+        body {
+            transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
 </head>
-<body class="state-lite">
+<body class="bg-[#F8FAFC] text-slate-800">
     <ModeSwitcher />
     <slot />
     <script src="/scripts/autotest.js" is:inline></script>
     <script>
-        import { $mode } from '../stores/mode';
+        import { $isThink } from '../stores/app-state';
 
-        function applyState(mode: 'lite' | 'think') {
+        function applyState(isThink: boolean) {
             const body = document.body;
-            if (mode === 'think') {
-                body.classList.remove('state-lite');
-                body.classList.add('state-think');
+            if (isThink) {
+                body.classList.add('is-think');
+                body.style.backgroundColor = '#050505';
+                body.style.color = '#F8FAFC';
             } else {
-                body.classList.remove('state-think');
-                body.classList.add('state-lite');
+                body.classList.remove('is-think');
+                body.style.backgroundColor = '#F8FAFC';
+                body.style.color = '#1e293b'; // slate-800
             }
         }
 
         // Set initial state
-        applyState($mode.get());
+        applyState($isThink.get());
 
         // Listen for changes
-        $mode.listen(applyState);
+        $isThink.listen(applyState);
     </script>
 </body>
 </html>

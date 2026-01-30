@@ -1,25 +1,69 @@
 
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import ArticleLayout from '../layouts/ArticleLayout.astro';
 import DualLayer from '../components/DualLayer.astro';
 
 const title = "Когда работа не заканчивается дома: о профдеформации";
 const description = "Глубокий разбор профессиональной деформации и её влияния на близких. Узнайте, как рабочие привычки влияют на семью и что с этим делать.";
 const ogImage = "/assets/og-image.png";
 ---
+<ArticleLayout title={title} description={description} ogImage={ogImage}>
+  <header class="relative min-h-[60vh] flex items-center justify-center overflow-hidden text-center">
+    <div class="absolute inset-0 bg-cover bg-center grayscale group-[.is-think]:grayscale-0 transition-all duration-1000" style="background-image: url(/assets/img/hero.webp);">
+        <div class="absolute inset-0 bg-white/70 group-[.is-think]:bg-black/70 transition-colors duration-1000"></div>
+    </div>
+    <div class="relative max-w-4xl p-8">
+      <h1 class="text-5xl font-bold leading-tight mb-4 font-serif group-[.is-think]:text-white">Когда работа не заканчивается дома</h1>
+      <p class="text-xl text-slate-700 group-[.is-think]:text-slate-300 transition-colors duration-500">
+        Большой текст о профессиональной деформации,
+        семье и тишине, в которой всё рушится
+      </p>
+    </div>
+  </header>
 
-<MainLayout title={title} description={description} ogImage={ogImage}>
-    <main class="max-w-3xl mx-auto my-24 px-6">
-        <DualLayer>
-            <div slot="lite">
-                <p class="text-2xl leading-relaxed text-slate-800">Этот текст — не статья и не сайт. Это попытка разложить по полкам явление, которое обычно остаётся безымянным, но разрушает семьи годами.</p>
+  <main class="max-w-3xl mx-auto my-12 px-6">
+
+    <DualLayer>
+        <div slot="lite">
+            <p class="text-2xl leading-relaxed text-slate-800 mb-6">Этот текст — не статья и не сайт. Это попытка разложить по полкам явление, которое обычно остаётся безымянным, но разрушает семьи годами.</p>
+            <p class="text-xl leading-relaxed text-slate-700">Речь пойдёт о профессиональной деформации — не в бытовом смысле «человек испортился», а как о медленном смещении способа мышления, которое незаметно выходит за пределы работы и начинает определять всё остальное.</p>
+        </div>
+        <div slot="think">
+            <h3 class="text-indigo-400 font-serif italic mb-4 tracking-tight">Пролог: Категориальная ошибка</h3>
+            <div class="text-slate-300 font-serif text-base leading-tight">
+                <p>В основе рассматриваемого феномена лежит когнитивное искажение, известное как «категориальная ошибка» (category mistake) — применение свойств одной логической категории к другой. В данном случае, паттерны поведения, эффективные в профессиональной среде (субъект-объектные отношения), переносятся в личную жизнь (субъект-субъектные отношения), что приводит к системному сбою в коммуникации.</p>
             </div>
-            <div slot="think">
-                <h3 class="text-indigo-400 font-serif italic mb-4 tracking-tight">Пролог: Категориальная ошибка</h3>
-                <div class="text-slate-300 font-serif text-base leading-tight">
-                    <p>В основе рассматриваемого феномена лежит когнитивное искажение, известное как «категориальная ошибка» (category mistake) — применение свойств одной логической категории к другой. В данном случае, паттерны поведения, эффективные в профессиональной среде (субъект-объектные отношения), переносятся в личную жизнь (субъект-субъектные отношения), что приводит к системному сбою в коммуникации.</p>
-                </div>
+        </div>
+    </DualLayer>
+
+    <DualLayer>
+        <div slot="lite">
+            <h2 class="text-4xl font-bold mt-20 mb-6 font-serif" id="origin">Откуда это берётся</h2>
+            <p class="text-xl leading-relaxed text-slate-700">Есть профессии, в которых человек годами живёт в режиме асимметрии. Один знает, другой учится. Один корректирует, другой принимает. Тренер, врач, учитель — все они работают внутри одной и той же схемы: ответственность за другого человека и право вмешиваться в его действия. Эта схема необходима для работы. Без неё невозможно учить, лечить, тренировать. Но проблема начинается тогда, когда схема перестаёт выключаться.</p>
+        </div>
+        <div slot="think">
+            <h3 class="text-indigo-400 font-serif italic mb-4 tracking-tight">Генезис когнитивного захвата и нейробиологический детерминизм</h3>
+            <div class="columns-1 md:columns-2 gap-8 text-slate-300 font-serif text-base leading-tight">
+                <p>В основе любой профессиональной деформации лежит фундаментальный принцип нейропластичности: «Cells that fire together, wire together». Когда человек годами выполняет однотипные когнитивные операции — анализ рисков у врача, поиск ошибок у корректора или выстраивание иерархии у руководителя — соответствующие нейронные контуры проходят через процесс долгосрочной потенциации (LTP).</p>
+                <p>Ваша «рабочая личность» — это не программное обеспечение, которое можно закрыть. Это аппаратное обеспечение (hardware). Мозг физически оптимизирован под рабочие задачи. Попытка «быть другим» дома требует активации менее развитых, энергозатратных нейронных путей, что в состоянии усталости практически невозможно.</p>
             </div>
-        </DualLayer>
-    </main>
-</MainLayout>
+        </div>
+    </DualLayer>
+    
+    <div class="w-full my-20 h-px bg-slate-300 group-[.is-think]:bg-slate-700 transition-colors duration-500"></div>
+
+    <DualLayer>
+        <div slot="lite">
+            <h2 class="text-4xl font-bold mt-14 mb-6 font-serif" id="in-real-life">Как это выглядит не в теории, а в жизни</h2>
+            <p class="text-xl leading-relaxed text-slate-700">Профессиональная деформация редко проявляется в виде грубости или открытого давления. Гораздо чаще она выглядит как спокойная, уверенная, рациональная позиция, с которой трудно спорить.</p>
+        </div>
+        <div slot="think">
+            <h3 class="text-indigo-400 font-serif italic mb-4 tracking-tight">Феноменология ролевого поглощения</h3>
+            <div class="text-slate-300 font-serif text-base leading-tight">
+                <p>В этом разделе мы анализируем, как конкретные профессиональные парадигмы — «Клинический взгляд», «Дидактический импульс» и «Инструментальная рациональность» — становятся доминирующими фильтрами в частной жизни.</p>
+            </div>
+        </div>
+    </DualLayer>
+
+  </main>
+</ArticleLayout>

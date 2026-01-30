@@ -6,11 +6,15 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        serif: ['Ibarra Real Nova', 'Spectral', 'serif'],
+        serif: ['Spectral', 'Playfair Display', 'serif'],
+        hand: ['Caveat', 'cursive'],
       },
       colors: {
-        'psyho-lite-accent': '#059669', // Emerald-600
-        'psyho-think-accent': '#6366F1', // Indigo-500
+        'lite-bg': '#F8FAFC',
+        'lite-text': '#1e293b',
+        'think-bg': '#0a0a0a',
+        'think-text': '#e2e8f0',
+        'think-accent': '#818cf8', // Indigo-400
       },
       keyframes: {
         'fade-in': {

@@ -1,0 +1,25 @@
+
+<div class="fixed top-6 right-6 z-50 flex items-center space-x-3">
+  <span class="text-sm font-medium is-think:text-white">Lite</span>
+  <label for="toggle" class="relative inline-flex items-center cursor-pointer">
+    <input type="checkbox" id="toggle" class="sr-only peer">
+    <div id="toggle-bg" class="w-14 h-8 bg-gray-200 rounded-full peer peer-checked:bg-indigo-600 transition-colors"></div>
+    <div class="absolute top-1 left-1 bg-white border-gray-300 border rounded-full h-6 w-6 transition-all peer-checked:translate-x-full"></div>
+  </label>
+  <span class="text-sm font-medium is-think:text-white">Think</span>
+</div>
+
+<script>
+  import { $isThink, toggleMode } from '../stores/app-state';
+
+  const checkbox = document.getElementById('toggle') as HTMLInputElement;
+
+  function updateToggle(isThink: boolean) {
+    checkbox.checked = isThink;
+  }
+
+  updateToggle($isThink.get());
+  $isThink.listen(updateToggle);
+
+  checkbox.addEventListener('change', toggleMode);
+</script>

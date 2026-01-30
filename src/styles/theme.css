@@ -1,53 +1,45 @@
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 body {
-  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- Lite State --- */
-body.state-lite {
+/* --- LITE State --- */
+body.is-lite {
   background-color: #F8FAFC;
   font-family: 'Inter', sans-serif;
-  color: #020617;
 }
+body.is-lite .think-content { display: none; }
+body.is-lite .lite-content { display: block; }
 
-body.state-lite .content-think {
-  display: none;
-}
 
-body.state-lite .content-lite {
-  display: block;
-}
-
-/* --- Think State --- */
-body.state-think {
-  background-color: #020617;
+/* --- THINK State --- */
+body.is-think {
+  background-color: #0a0a0a;
   font-family: 'Spectral', serif;
-  color: #F8FAFC;
+}
+body.is-think .lite-content { display: none; }
+body.is-think .think-content { display: block; animation: fadeIn 0.4s ease-in; }
+
+/* Typography & Density */
+.is-lite p, .is-lite li {
+    font-size: 1.25rem;
+    line-height: 1.8;
 }
 
-body.state-think .content-lite {
-  display: none;
+.is-think .think-content {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #cbd5e1; /* slate-300 */
 }
 
-body.state-think .content-think {
-  display: block;
-  animation: fadeIn 0.4s ease-in;
-}
-
-/* Accent Colors */
-.accent-lite {
-    color: #059669; /* Emerald-600 */
-}
-
-.accent-think {
-    color: #6366F1; /* Indigo-500 */
+.is-think .think-content h3 {
+    font-family: 'Playfair Display', serif;
+    color: #a5b4fc; /* indigo-300 */
+    font-size: 1.5rem;
+    font-style: italic;
 }

@@ -1,15 +1,14 @@
----
-import ModeSwitcher from '../components/ModeSwitcher.astro';
 
+---
+import IphoneToggle from '../components/IphoneToggle.astro';
+import HandwrittenNote from '../components/HandwrittenNote.astro';
 interface Props {
 	title: string;
 	description: string;
 	ogImage?: string;
 }
-
 const { title, description, ogImage } = Astro.props;
 ---
-
 <!doctype html>
 <html lang="ru">
 <head>
@@ -19,55 +18,38 @@ const { title, description, ogImage } = Astro.props;
     <meta name="description" content={description}>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
-
-    {/* Fonts */}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Ibarra+Real+Nova:wght@400;700&family=Spectral:wght@400;700&display=swap" rel="stylesheet">
-
-    {/* Open Graph / Facebook */}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Spectral:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/theme.css">
     <meta property="og:type" content="article">
     <meta property="og:url" content={Astro.url.origin + Astro.url.pathname}>
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
     {ogImage && <meta property="og:image" content={Astro.url.origin + ogImage}>}
-
-    {/* Twitter */}
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content={Astro.url.origin + Astro.url.pathname}>
     <meta property="twitter:title" content={title}>
     <meta property="twitter:description" content={description}>
     {ogImage && <meta property="twitter:image" content={Astro.url.origin + ogImage}>}
-    <style is:global>
-        body {
-            transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-    </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800">
-    <ModeSwitcher />
+<body class="is-lite">
+    <HandwrittenNote />
+    <IphoneToggle />
     <slot />
-    <script src="/scripts/autotest.js" is:inline></script>
     <script>
         import { $isThink } from '../stores/app-state';
-
         function applyState(isThink: boolean) {
             const body = document.body;
             if (isThink) {
+                body.classList.remove('is-lite');
                 body.classList.add('is-think');
-                body.style.backgroundColor = '#050505';
-                body.style.color = '#F8FAFC';
             } else {
                 body.classList.remove('is-think');
-                body.style.backgroundColor = '#F8FAFC';
-                body.style.color = '#1e293b'; // slate-800
+                body.classList.add('is-lite');
             }
         }
-
-        // Set initial state
         applyState($isThink.get());
-
-        // Listen for changes
         $isThink.listen(applyState);
     </script>
 </body>

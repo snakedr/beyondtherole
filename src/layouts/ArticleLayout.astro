@@ -1,9 +1,15 @@
 ---
-import IphoneToggle from '../components/IphoneToggle.astro';
-import HandwrittenNote from '../components/HandwrittenNote.astro';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+	ogImage?: string;
+}
 
 const { title, description, ogImage } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -12,43 +18,45 @@ const { title, description, ogImage } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description}>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Spectral:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
-    
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/styles/final-theme.css">
+    <link rel="stylesheet" href="/styles/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
     <meta property="og:url" content={Astro.url.origin + Astro.url.pathname}>
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
     {ogImage && <meta property="og:image" content={Astro.url.origin + ogImage}>}
 
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content={Astro.url.origin + Astro.url.pathname}>
     <meta property="twitter:title" content={title}>
     <meta property="twitter:description" content={description}>
     {ogImage && <meta property="twitter:image" content={Astro.url.origin + ogImage}>}
-    <style is:global>
-        body {
-            transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-    </style>
+
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 font-sans">
-    <HandwrittenNote />
-    <IphoneToggle />
+<body>
+    <div id="reality-toggle">
+        <span>Lite</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="toggle-input" class="peer">
+            <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-indigo-600"></div>
+            <div class="absolute top-0.5 left-[2px] bg-white border-gray-300 border rounded-full h-5 w-5 transition-all peer-checked:translate-x-full"></div>
+        </label>
+        <span>Think</span>
+    </div>
     <slot />
+    <script src="/scripts/autotest.js" is:inline></script>
     <script>
-        import { $isThink } from '../stores/app-state';
-        function applyState(isThink: boolean) {
-            const body = document.body;
-            if (isThink) {
-                body.classList.add('is-think');
-            } else {
-                body.classList.remove('is-think');
-            }
+        const toggle = document.getElementById('toggle-input');
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('is-think');
+            });
         }
-        applyState($isThink.get());
-        $isThink.listen(applyState);
     </script>
 </body>
 </html>

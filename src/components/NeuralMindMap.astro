@@ -1,0 +1,96 @@
+---
+---
+<div class="neural-mind-map">
+    <div class="lite-content">
+        <h3>Simplified Flow of Disconnect</h3>
+        <div class="flowchart-lite">
+            <div class="node">Work Demands</div>
+            <div class="arrow">→</div>
+            <div class="node">Role Immersion</div>
+            <div class="arrow">→</div>
+            <div class="node">Family Strain</div>
+            <div class="arrow">→</div>
+            <div class="node">Emotional Gap</div>
+        </div>
+        <p class="lite-explanation">This simple chart illustrates the basic progression from professional demands to emotional distance within the family unit.</p>
+    </div>
+    <div class="think-layer">
+        <h3>Complex, Pulsating Synaptic Web (Placeholder for advanced visualization)</h3>
+        <div class="synaptic-web-placeholder">
+            <p>Here, a dynamic and interactive visualization representing a complex neural mind map would render, showing intricate connections, feedback loops, and emergent properties of cognitive and social processes. This would illustrate the neurobiological underpinnings and sociological implications of role transference with detailed, pulsating synaptic pathways and information flow.</p>
+            <p>This advanced visualization would leverage libraries such as D3.js or Three.js, dynamically generating nodes for concepts, edges for relationships, and animating their interactions to convey the density and complexity of the "Think" mode's analysis.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .neural-mind-map {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        border-radius: 8px;
+    }
+
+    /* Lite Mode Specific Styles for Flowchart */
+    .flowchart-lite {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .flowchart-lite .node {
+        background-color: #e0e0e0;
+        color: #333;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .flowchart-lite .arrow {
+        font-size: 1.5rem;
+        color: #666;
+    }
+
+    .lite-explanation {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-family: 'Inter', sans-serif;
+        color: #555;
+    }
+
+    /* Think Mode Specific Styles for Placeholder */
+    .synaptic-web-placeholder {
+        background-color: #1a1a1a;
+        color: #b0b0b0;
+        padding: 2rem;
+        border-radius: 8px;
+        border: 1px dashed #444;
+        font-family: 'Spectral', serif;
+        line-height: 1.8;
+        font-size: 1.1rem;
+    }
+
+    .synaptic-web-placeholder h3 {
+        color: #FFD700; /* Gold for contrast */
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .synaptic-web-placeholder p {
+        margin-bottom: 1rem;
+    }
+
+    /* Visibility controlled by body.is-lite / body.is-think classes (defined in global.css) */
+    body.is-lite .neural-mind-map .think-layer {
+        display: none;
+    }
+    body.is-think .neural-mind-map .lite-content {
+        display: none;
+    }
+</style>

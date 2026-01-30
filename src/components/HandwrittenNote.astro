@@ -1,0 +1,34 @@
+---
+---
+<div class="handwritten-note">
+    <p>Если этот сайт поможет спасти хотя бы одну семью, то я не зря потратил время.</p>
+</div>
+
+<style>
+    .handwritten-note {
+        position: absolute;
+        top: 20px; /* Adjust as needed */
+        left: 20px; /* Adjust as needed */
+        transform: rotate(-3deg);
+        font-family: 'Caveat', cursive; /* Use the imported handwritten font */
+        font-size: 1.5rem; /* Adjust size as needed */
+        color: #333; /* Dark gray for a pencil/ink look */
+        background-color: rgba(255, 255, 200, 0.7); /* Slightly yellowed paper background */
+        padding: 10px 15px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 999; /* Ensure it's above most content but below the toggle */
+        max-width: 250px; /* Limit width to make it look like a note */
+        line-height: 1.2;
+    }
+
+    /* Adjust for smaller screens if necessary */
+    @media (max-width: 768px) {
+        .handwritten-note {
+            top: 10px;
+            left: 10px;
+            font-size: 1.2rem;
+            max-width: 180px;
+        }
+    }
+</style>

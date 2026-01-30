@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import HandwrittenNote from '../components/HandwrittenNote.astro';
 
 interface Props {
 	title: string;
@@ -38,23 +39,34 @@ const { title, description, ogImage } = Astro.props;
     {ogImage && <meta property="twitter:image" content={Astro.url.origin + ogImage}>}
 
 </head>
-<body>
-    <div id="reality-toggle">
-        <span>Lite</span>
-        <label class="relative inline-flex items-center cursor-pointer">
-            <input type="checkbox" id="toggle-input" class="peer">
-            <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-indigo-600"></div>
-            <div class="absolute top-0.5 left-[2px] bg-white border-gray-300 border rounded-full h-5 w-5 transition-all peer-checked:translate-x-full"></div>
+<body class="is-lite">
+    <HandwrittenNote />
+    <div id="theme-toggle" class="theme-toggle">
+        <span class="toggle-label">Lite</span>
+        <label class="switch">
+            <input type="checkbox" id="toggle-input">
+            <span class="slider round"></span>
         </label>
-        <span>Think</span>
+        <span class="toggle-label">Think</span>
     </div>
     <slot />
     <script src="/scripts/autotest.js" is:inline></script>
     <script>
-        const toggle = document.getElementById('toggle-input');
-        if (toggle) {
-            toggle.addEventListener('click', () => {
-                document.body.classList.toggle('is-think');
+        const toggleInput = document.getElementById('toggle-input');
+        const body = document.body;
+
+        // Set initial state based on body class
+        if (body.classList.contains('is-think')) {
+            toggleInput.checked = true;
+        }
+
+        if (toggleInput) {
+            toggleInput.addEventListener('change', () => {
+                if (toggleInput.checked) {
+                    body.classList.replace('is-lite', 'is-think');
+                } else {
+                    body.classList.replace('is-think', 'is-lite');
+                }
             });
         }
     </script>

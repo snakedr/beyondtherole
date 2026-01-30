@@ -1,36 +1,51 @@
 
----
-// No server-side logic needed for the component itself
----
-<div id="mode-switcher-container" class="sticky top-4 w-full flex justify-center z-50">
-  <button id="mode-switcher" class="px-4 py-2 rounded-full font-bold transition-all duration-300">
-    <!-- Text will be set by client-side script -->
-  </button>
+<div class="fixed top-4 right-4 z-50">
+  <div id="mode-switcher" class="flex p-1 space-x-1 bg-slate-200 think:bg-slate-700 rounded-full">
+    <button id="lite-button" class="px-4 py-1 text-sm font-semibold rounded-full transition-colors duration-300">
+      Lite
+    </button>
+    <button id="think-button" class="px-4 py-1 text-sm font-semibold rounded-full transition-colors duration-300">
+      Think
+    </button>
+  </div>
 </div>
 
 <script>
   import { $mode, toggleMode } from '../stores/mode';
 
-  const switcher = document.getElementById('mode-switcher') as HTMLButtonElement;
-  
-  function updateSwitcher(mode: 'lite' | 'think') {
+  const liteButton = document.getElementById('lite-button') as HTMLButtonElement;
+  const thinkButton = document.getElementById('think-button') as HTMLButtonElement;
+
+  function updateButtons(mode: 'lite' | 'think') {
     if (mode === 'think') {
-      switcher.textContent = 'Простым языком';
-      switcher.classList.remove('bg-psyho-lite-accent', 'text-white');
-      switcher.classList.add('bg-psyho-think-accent', 'text-white');
+      thinkButton.classList.add('bg-white', 'text-black');
+      thinkButton.classList.remove('text-white');
+      liteButton.classList.remove('bg-white', 'text-black');
+      liteButton.classList.add('text-white');
     } else {
-      switcher.textContent = 'Научный анализ';
-      switcher.classList.remove('bg-psyho-think-accent', 'text-white');
-      switcher.classList.add('bg-psyho-lite-accent', 'text-white');
+      liteButton.classList.add('bg-white', 'text-black');
+      liteButton.classList.remove('text-black');
+      thinkButton.classList.remove('bg-white', 'text-black');
+      thinkButton.classList.add('text-black');
     }
   }
 
   // Set initial state
-  updateSwitcher($mode.get());
+  updateButtons($mode.get());
 
   // Listen for changes
-  $mode.listen(updateSwitcher);
+  $mode.listen(updateButtons);
 
-  // Attach event listener
-  switcher.addEventListener('click', toggleMode);
+  // Attach event listeners
+  liteButton.addEventListener('click', () => {
+    if ($mode.get() === 'think') {
+      toggleMode();
+    }
+  });
+
+  thinkButton.addEventListener('click', () => {
+    if ($mode.get() === 'lite') {
+      toggleMode();
+    }
+  });
 </script>

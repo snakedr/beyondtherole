@@ -1,47 +1,23 @@
----
-import '../styles/global.css';
-
-export interface Props {
-	title: string;
-}
-
-const { title } = Astro.props;
----
 <!doctype html>
-<html lang="ru" class="lite">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="description" content="Role Fatigue Project" />
-	<meta name="viewport" content="width=device-width" />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<meta name="generator" content={Astro.generator} />
-	<title>{title}</title>
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Spectral:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body class="bg-slate-50 text-slate-900 think:bg-slate-950 think:text-white transition-colors duration-500 font-sans think:font-serif">
-	<slot />
-	<script>
-		import { $mode } from '../stores/mode';
-
-		function applyModeClass(mode: 'lite' | 'think') {
-			const html = document.documentElement;
-			if (mode === 'think') {
-				html.classList.add('think');
-			} else {
-				html.classList.remove('think');
-			}
-		}
-
-		// Set initial mode
-		applyModeClass($mode.get());
-
-		// Listen for changes
-		$mode.listen((mode) => {
-			applyModeClass(mode);
-		});
-	</script>
-</body>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro Basics</title>
+	</head>
+	<body>
+		<slot />
+	</body>
 </html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>

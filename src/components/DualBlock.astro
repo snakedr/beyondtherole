@@ -1,0 +1,13 @@
+
+---
+// DualBlock.astro
+const { id } = Astro.props;
+---
+<section id={id} class="dual-section my-12">
+  <div class="content-lite">
+    <slot name="lite-content" />
+  </div>
+  <div class="content-think">
+    <slot name="think-content" />
+  </div>
+</section>

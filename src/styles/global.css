@@ -1,1 +1,208 @@
-@import "tailwindcss";
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px; /* Reduced base font size */
+  line-height: 1.7;
+}
+
+.hero {
+  position: relative;
+  min-height: 60vh; /* Reduced height slightly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/img/hero.webp");
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.7);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-content h1 {
+  font-size: 3rem; /* Adjusted relative to new base */
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.25rem; /* Adjusted relative to new base */
+  color: #333;
+}
+
+.article {
+  max-width: 720px; /* Slightly adjusted for new font size */
+  margin: 4rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h2 {
+  font-size: 2rem; /* Adjusted */
+  margin-top: 3.5rem;
+  margin-bottom: 1.2rem;
+  scroll-margin-top: 2rem; /* Adds space above anchor when jumping from TOC */
+}
+
+h3 {
+  font-size: 1.5rem; /* Adjusted */
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+ul {
+  margin: 1.5rem 0 2rem 1.5rem;
+}
+
+li {
+  margin-bottom: 0.6rem;
+}
+
+a {
+  color: #111;
+  text-decoration: underline;
+}
+
+.references ol {
+  padding-left: 1.5rem;
+}
+
+.references li {
+  margin-bottom: 1rem;
+  font-size: 0.95em;
+}
+
+/* Autotest Styles */
+.autotest-form {
+  border: 1px solid #ddd;
+  padding: 1.5rem 2rem;
+  border-radius: 4px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.autotest-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.autotest-item:last-child {
+  margin-bottom: 0;
+}
+
+.autotest-item input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.25em;
+  margin-right: 0.75rem;
+  cursor: pointer;
+}
+
+.autotest-item label {
+  cursor: pointer;
+}
+
+.autotest-result {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+/* Table of Contents Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+.toc {
+  max-width: 720px; /* Match article width */
+  margin: 0 auto 3rem auto; /* Center it and add space below */
+  padding: 2rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fdfdfd;
+}
+
+.toc-title {
+  font-size: 1.2rem; /* Adjusted */
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.75rem;
+}
+
+.toc-list {
+  padding-left: 0;
+  list-style-type: none;
+  margin: 0;
+  font-size: 1rem;
+  columns: 2; /* Create two columns for a more compact look */
+  column-gap: 2rem;
+}
+
+.toc-list li {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.toc-list a {
+  text-decoration: none;
+  color: #555;
+}
+
+.toc-list a:hover {
+  text-decoration: underline;
+  color: #111;
+}
+
+/* Remove complex media queries for TOC positioning */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 16px; /* Keep it consistent */
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem; /* Adjust for mobile */
+  }
+
+  .toc-list {
+    columns: 1; /* Single column on smaller screens */
+  }
+}

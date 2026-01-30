@@ -44,7 +44,7 @@ const { title, description, ogImage } = Astro.props;
 <body class="state-lite">
     <ModeSwitcher />
     <slot />
-    <script src="/scripts/autotest.js"></script>
+    <script src="/scripts/autotest.js" is:inline></script>
     <script>
         import { $mode } from '../stores/mode';
 

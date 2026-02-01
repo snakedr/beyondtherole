@@ -29,7 +29,29 @@ export default {
       animation: {
         'fade-in': 'fade-in 0.4s ease-in',
         'slide-up': 'slide-up 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-      }
+      },
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            'h1, h2, h3, h4, h5, h6': {
+              fontFamily: theme('fontFamily.sans').join(', '),
+            },
+          },
+        },
+        invert: {
+          css: {
+            '--tw-prose-body': theme('colors.slate[300]'),
+            '--tw-prose-headings': theme('colors.yellow[400]'),
+            '--tw-prose-links': theme('colors.indigo[300]'),
+            '--tw-prose-bold': theme('colors.white'),
+            '--tw-prose-quote-borders': theme('colors.slate[700]'),
+            'h1, h2, h3, h4, h5, h6': {
+              fontFamily: theme('fontFamily.serif').join(', '),
+              color: theme('colors.yellow[400]'),
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [

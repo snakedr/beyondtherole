@@ -19,12 +19,6 @@ body {
 .show-think .think-layer { display: block; }
 
 
-/* Think Layer Box Style */
-.think-layer {
-    @apply p-4 mt-4 rounded-md border-l-4 border-indigo-400 bg-indigo-900/20 text-indigo-100;
-}
-
-
 /* Hero Background Image & Overlay */
 .hero-bg {
   position: absolute;

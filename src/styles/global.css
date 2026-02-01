@@ -38,7 +38,7 @@ body.is-think .think-layer {
 
 /* Think Layer Box Style */
 .think-layer {
-    @apply not-prose p-4 mt-4 rounded-md border-l-4 border-indigo-400 bg-indigo-900/20 text-indigo-100;
+    @apply p-4 mt-4 rounded-md border-l-4 border-indigo-400 bg-indigo-900/20 text-indigo-100;
 }
 
 

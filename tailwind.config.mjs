@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: ['class', '.is-think'],
   theme: {
     extend: {
       fontFamily: {
@@ -12,9 +11,6 @@ export default {
       colors: {
         'lite-bg': '#F8FAFC',
         'lite-text': '#1e293b',
-        'think-bg': '#0a0a0a',
-        'think-text': '#e2e8f0',
-        'think-accent': '#818cf8', // Indigo-400
       },
       keyframes: {
         'fade-in': {
@@ -35,20 +31,17 @@ export default {
           css: {
             'h1, h2, h3, h4, h5, h6': {
               fontFamily: theme('fontFamily.sans').join(', '),
+              color: theme('colors.slate[800]'),
             },
-          },
-        },
-        invert: {
-          css: {
-            '--tw-prose-body': theme('colors.slate[300]'),
-            '--tw-prose-headings': theme('colors.yellow[400]'),
-            '--tw-prose-links': theme('colors.indigo[300]'),
-            '--tw-prose-bold': theme('colors.white'),
-            '--tw-prose-quote-borders': theme('colors.slate[700]'),
-            'h1, h2, h3, h4, h5, h6': {
-              fontFamily: theme('fontFamily.serif').join(', '),
-              color: theme('colors.yellow[400]'),
+            p: {
+              color: theme('colors.slate[700]'),
             },
+            a: {
+              color: theme('colors.indigo[600]'),
+              '&:hover': {
+                color: theme('colors.indigo[800]'),
+              },
+            }
           },
         },
       }),

@@ -1,39 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;700&family=Spectral:wght@400;700&display=swap');
 
-/* Base Body Styles (Foundation for Theme Switching) */
+/* Base Body Styles */
 body {
     margin: 0;
     width: 100%;
     min-height: 100vh;
     transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.is-lite {
     background-color: #F8FAFC; /* Corresponds to Tailwind 'slate-50' */
     color: #1e293b; /* Corresponds to Tailwind 'slate-800' */
     font-family: 'Inter', sans-serif;
 }
 
-body.is-think {
-    background-color: #0a0a0a;
-    color: #e2e8f0; /* Corresponds to Tailwind 'slate-200' */
-    font-family: 'Spectral', serif;
-}
+/* Content Visibility Rules */
+.lite-content { display: block; }
+.think-layer { display: none; }
 
-
-/* Content Visibility Toggle */
-body.is-lite .lite-content {
-    display: block;
-}
-body.is-lite .think-layer {
-    display: none;
-}
-body.is-think .lite-content {
-    display: none;
-}
-body.is-think .think-layer {
-    display: block;
-}
+.show-think .lite-content { display: none; }
+.show-think .think-layer { display: block; }
 
 
 /* Think Layer Box Style */
@@ -52,18 +35,10 @@ body.is-think .think-layer {
   filter: grayscale(100%);
 }
 
-body.is-lite .hero-bg::after {
+.hero-bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(2px);
-}
-
-body.is-think .hero-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(2px);
 }

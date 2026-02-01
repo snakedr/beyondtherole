@@ -43,7 +43,7 @@ const { title, description, ogImage } = Astro.props;
         <span id="toggle-text">Показать 'Think'</span>
     </button>
     
-    <div id="main-content" class="prose prose-lg max-w-4xl mx-auto py-12 px-6">
+    <div>
         <slot />
     </div>
 
@@ -52,14 +52,14 @@ const { title, description, ogImage } = Astro.props;
         document.addEventListener('astro:page-load', () => {
             const toggleButton = document.getElementById('content-toggle-btn');
             const toggleText = document.getElementById('toggle-text');
-            const mainContent = document.getElementById('main-content');
+            const contentWrapper = document.getElementById('content-wrapper');
 
             function updateButton(isThinkShown) {
                 if (isThinkShown) {
-                    mainContent.classList.add('show-think');
+                    contentWrapper.classList.add('show-think');
                     toggleText.textContent = "Скрыть 'Think'";
                 } else {
-                    mainContent.classList.remove('show-think');
+                    contentWrapper.classList.remove('show-think');
                     toggleText.textContent = "Показать 'Think'";
                 }
             }
@@ -68,7 +68,7 @@ const { title, description, ogImage } = Astro.props;
             updateButton(false);
 
             toggleButton.addEventListener('click', () => {
-                const isCurrentlyThink = mainContent.classList.contains('show-think');
+                const isCurrentlyThink = contentWrapper.classList.contains('show-think');
                 updateButton(!isCurrentlyThink);
             });
         });

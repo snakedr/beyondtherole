@@ -12,11 +12,11 @@ body {
 }
 
 /* Content Visibility Rules */
-.lite-content { display: block; }
-.think-layer { display: none; }
+#content-wrapper .lite-content { display: block; }
+#content-wrapper .think-layer { display: none; }
 
-.show-think .lite-content { display: none; }
-.show-think .think-layer { display: block; }
+#content-wrapper.show-think .lite-content { display: none; }
+#content-wrapper.show-think .think-layer { display: block; }
 
 
 /* Hero Background Image & Overlay */

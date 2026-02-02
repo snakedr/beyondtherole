@@ -4,9 +4,9 @@ import HandwrittenNote from '../components/HandwrittenNote.astro';
 import ContentToggle from '../components/ContentToggle.astro';
 
 interface Props {
-	title: string;
-	description: string;
-	ogImage?: string;
+    title: string;
+    description: string;
+    ogImage?: string;
 }
 
 const { title, description, ogImage } = Astro.props;
@@ -21,16 +21,17 @@ const { title, description, ogImage } = Astro.props;
     <meta name="description" content={description}>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/styles/global.css">
 
-    <!-- Open Graph / Facebook -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
     <meta property="og:type" content="article">
     <meta property="og:url" content={Astro.url.origin + Astro.url.pathname}>
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
     {ogImage && <meta property="og:image" content={Astro.url.origin + ogImage}>}
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content={Astro.url.origin + Astro.url.pathname}>
     <meta property="twitter:title" content={title}>

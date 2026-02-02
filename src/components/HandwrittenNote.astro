@@ -1,33 +1,42 @@
-<div class="handwritten-note">
-    <p>Если этот сайт поможет спасти хотя бы одну семью, то я не зря потратил время.</p>
+---
+---
+<div class="handwritten-note-container">
+    <p class="note-text">Если этот сайт поможет спасти хотя бы одну семью, то я не зря потратил время</p>
 </div>
 
 <style>
-    .handwritten-note {
+    /* Стили применяются только к этому компоненту */
+    .handwritten-note-container {
         position: absolute;
         top: 20px;
         left: 20px;
+        z-index: 1000;
         transform: rotate(-3deg);
-        font-family: 'Dancing Script', cursive;
-        font-size: 1.2rem; /* ~20% меньше */
-        color: #444; /* мягче, чем #333 */
-        padding: 0; /* убрали ощущение блока */
-        background: none; /* убрали подложку */
-        box-shadow: none; /* без карточности */
-        z-index: 999;
-        max-width: 240px;
-        line-height: 1.25;
-        opacity: 0.85; /* эффект карандаша */
-        pointer-events: none; /* не мешает интерфейсу */
+        pointer-events: none; /* Чтобы можно было кликать сквозь записку */
+        max-width: 250px;
+        user-select: none;
     }
 
+    .note-text {
+        /* Шрифт подтянется из Layout */
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.3rem;
+        color: #444;
+        line-height: 1.25;
+        margin: 0;
+        opacity: 0.9;
+        text-shadow: 1px 1px 0px rgba(255,255,255,0.5); /* Легкая тень для читаемости */
+    }
+
+    /* Адаптив для мобильных */
     @media (max-width: 768px) {
-        .handwritten-note {
+        .handwritten-note-container {
             top: 10px;
             left: 10px;
-            font-size: 1.05rem;
             max-width: 180px;
+        }
+        .note-text {
+            font-size: 1.1rem;
         }
     }
 </style>
-

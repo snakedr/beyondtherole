@@ -1,4 +1,12 @@
 ---
+import '../styles/global.css';
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+
+const title = "Когда работа не заканчивается дома: о профдеформации";
+const description = "Глубокий разбор профессиональной деформации и её влияния на близких. Узнайте, как рабочие привычки влияют на семью и что с этим делать.";
+const ogImage = "/assets/og-image.png";
+---
+
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
@@ -26,13 +34,6 @@
     }
   }
 </style>
-import '../styles/global.css';
-import ArticleLayout from '../layouts/ArticleLayout.astro';
-
-const title = "Когда работа не заканчивается дома: о профдеформации";
-const description = "Глубокий разбор профессиональной деформации и её влияния на близких. Узнайте, как рабочие привычки влияют на семью и что с этим делать.";
-const ogImage = "/assets/og-image.png";
----
 
 <ArticleLayout title={title} description={description} ogImage={ogImage}>
     <!-- Toggle button and its styles/script, preserving its functionality -->

@@ -1,26 +1,26 @@
 ---
 ---
-<button id="content-toggle-btn" class="fixed top-4 right-4 z-50 px-4 py-2 rounded-xl bg-white/70 backdrop-blur-md shadow-md border border-gray-200 text-sm font-medium text-gray-800 hover:bg-white/90 transition-colors">
+<button id="reality-toggle">
     <span id="toggle-text">Показать 'Think'</span>
 </button>
 
 <script>
     document.addEventListener('astro:page-load', () => {
-        const toggleButton = document.getElementById('content-toggle-btn');
+        const toggleButton = document.getElementById('reality-toggle');
         const toggleText = document.getElementById('toggle-text');
-        const contentWrapper = document.getElementById('content-wrapper');
+        // No longer need contentWrapper
 
-        if (!toggleButton || !toggleText || !contentWrapper) {
+        if (!toggleButton || !toggleText) {
             console.error('Content toggle elements not found.');
             return;
         }
 
         function updateButton(isThinkShown) {
             if (isThinkShown) {
-                contentWrapper.classList.add('show-think');
+                document.body.classList.add('is-think');
                 toggleText.textContent = "Скрыть 'Think'";
             } else {
-                contentWrapper.classList.remove('show-think');
+                document.body.classList.remove('is-think');
                 toggleText.textContent = "Показать 'Think'";
             }
         }
@@ -29,7 +29,7 @@
         updateButton(false);
 
         toggleButton.addEventListener('click', () => {
-            const isCurrentlyThink = contentWrapper.classList.contains('show-think');
+            const isCurrentlyThink = document.body.classList.contains('is-think');
             updateButton(!isCurrentlyThink);
         });
     });

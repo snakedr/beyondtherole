@@ -11,12 +11,41 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-/* Content Visibility Rules */
-#content-wrapper .lite-content { display: block; }
-#content-wrapper .think-layer { display: none; }
+/* Think layer visibility */
+.think-layer {
+  padding: 1rem;
+  margin-top: 1rem;
+  border-left: 3px solid #6366F1; /* Indigo-500 */
+  background-color: #1e293b; /* slate-800 */
+  color: #e2e8f0; /* slate-200 */
+}
 
-#content-wrapper.show-think .lite-content { display: none; }
-#content-wrapper.show-think .think-layer { display: block; }
+body .think-layer {
+  display: none;
+}
+
+body.is-think .think-layer {
+  display: block;
+}
+
+/* Basic styles for the toggle */
+#reality-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 9999px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Content Visibility Rules (using body.is-think) */
+body .lite-content { display: block; }
+body.is-think .lite-content { display: none; }
 
 
 /* Hero Background Image & Overlay */

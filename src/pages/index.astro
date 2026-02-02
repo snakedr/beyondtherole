@@ -1,5 +1,5 @@
 ---
-// index.astro - Весь сайт в одном файле.
+// Финальный монолитный файл
 ---
 <!DOCTYPE html>
 <html lang="ru">
@@ -10,10 +10,10 @@
 </head>
 <body>
 
-    <header class="header">
+    <header class="hero">
         <div class="container">
             <h1>Когда работа не заканчивается дома</h1>
-            <p class="hero-sub">Профессиональная деформация, семья и тишина.</p>
+            <p class="hero-sub">Профессиональная деформация, семья и тишину.</p>
         </div>
     </header>
 
@@ -22,7 +22,7 @@
             <span class="label">Lite</span>
             <label class="switch">
                 <input type="checkbox" id="think-toggle">
-                <span class="slider"></span>
+                <span class="slider round"></span>
             </label>
             <span class="label">Think</span>
         </div>
@@ -32,135 +32,72 @@
         <article class="content">
             <p>Этот текст — попытка разложить по полкам явление, которое обычно остаётся безымянным. Речь о профессиональной деформации — как о медленном смещении способа мышления.</p>
             
-            <section class="think-layer hidden">
+            <div class="think-layer">
                 <div class="think-card">
                     <h3>Слой Think: Нейробиология</h3>
-                    <p>Закон Хебба гласит: «Нейроны, разряжающиеся вместе, связываются вместе». Ваша рабочая личность — это hardware. Мозг оптимизируется под задачи, и «выключить» это дома физически трудно.</p>
+                    <p>Закон Хебба гласит: «Нейроны, разряжающиеся вместе, связываются вместе». Ваша рабочая личность — это hardware. Мозг оптимизируется под задачи.</p>
                 </div>
-            </section>
+            </div>
 
-            <p>Мы часто приносим домой не усталость, а рабочие алгоритмы. Учитель начинает учить партнера, менеджер — управлять бытом, юрист — строить обвинение в споре о немытой посуде.</p>
+            <p>Мы часто приносим домой не усталость, а рабочие алгоритмы. Учитель начинает учить партнера, менеджер — управлять бытом, юрист — строить обвинение.</p>
 
-            <section class="think-layer hidden">
+            <div class="think-layer">
                 <div class="think-card">
                     <h3>Слой Think: Когнитивные схемы</h3>
-                    <p>Профессионализм формирует ригидные схемы. Мы перестаем видеть человека, а видим «кейс» или «задачу». Это когнитивный захват, где экспертиза убивает эмпатию.</p>
+                    <p>Профессионализм формирует ригидные схемы. Мы перестаем видеть человека, а видим «кейс» или «задачу». Это когнитивный захват.</p>
                 </div>
-            </section>
+            </div>
 
             <p>Выход не в том, чтобы «забыть» о работе, а в том, чтобы легализовать свою уязвимость. Дома мы имеем право не знать ответов.</p>
         </article>
     </main>
 
     <style>
-        /* База и Типографика Apple */
         :root {
             --apple-green: #34c759;
             --apple-blue: #007aff;
-            --bg-gray: #f5f5f7;
-            --text-main: #1d1d1f;
+            --text-gray: #86868b;
         }
 
         body {
             margin: 0;
-            background: #fff;
-            color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            -webkit-font-smoothing: antialiased;
+            color: #1d1d1f;
+            line-height: 1.5;
         }
 
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
 
-        .header {
-            padding: 100px 0 50px;
-            text-align: center;
-            background: var(--bg-gray);
-        }
+        /* Hero */
+        .hero { padding: 80px 0 40px; text-align: center; background: #f5f5f7; }
+        h1 { font-size: 48px; font-weight: 700; margin: 0; letter-spacing: -0.5px; }
+        .hero-sub { font-size: 24px; color: var(--text-gray); margin-top: 10px; }
 
-        h1 { font-size: 48px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; }
-        .hero-sub { font-size: 24px; color: #86868b; margin-top: 15px; }
-
-        /* Тот самый тумблер */
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(20px);
-            padding: 20px 0;
-            border-bottom: 1px solid #d2d2d7;
-            z-index: 1000;
-        }
-
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .label { font-size: 14px; font-weight: 600; color: #86868b; }
+        /* Toggle */
+        .sticky-nav { position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); padding: 20px 0; border-bottom: 1px solid #d2d2d7; z-index: 100; }
+        .toggle-container { display: flex; justify-content: center; align-items: center; gap: 12px; }
+        .label { font-size: 14px; font-weight: 600; color: var(--text-gray); }
 
         .switch { position: relative; display: inline-block; width: 51px; height: 31px; }
         .switch input { opacity: 0; width: 0; height: 0; }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #d2d2d7;
-            transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 34px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 27px; width: 27px;
-            left: 2px; bottom: 2px;
-            background-color: white;
-            transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 50%;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-        }
-
+        .slider { position: absolute; cursor: pointer; inset: 0; background-color: #d2d2d7; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 27px; width: 27px; left: 2px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; box-shadow: 0 3px 8px rgba(0,0,0,0.15); }
         input:checked + .slider { background-color: var(--apple-green); }
         input:checked + .slider:before { transform: translateX(20px); }
 
-        /* Контентные блоки */
-        .content { font-size: 21px; line-height: 1.5; padding: 40px 0; }
-        .content p { margin-bottom: 28px; }
-
-        /* Слои Think */
-        .think-layer {
-            overflow: hidden;
-            transition: all 0.5s ease;
-            max-height: 0;
-            opacity: 0;
-            transform: scale(0.98);
+        /* Content & Think Layers */
+        .content { padding: 40px 0; font-size: 21px; }
+        .think-layer { 
+            max-height: 0; 
+            opacity: 0; 
+            overflow: hidden; 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            margin: 0;
         }
-
-        .think-layer.visible {
-            max-height: 500px;
-            opacity: 1;
-            transform: scale(1);
-            margin: 30px 0;
-        }
-
-        .think-card {
-            background: #f0f5ff;
-            border-left: 4px solid var(--apple-blue);
-            padding: 24px;
-            border-radius: 0 12px 12px 0;
-        }
-
-        .think-card h3 { color: var(--apple-blue); margin-top: 0; font-size: 18px; }
-        .think-card p { font-size: 18px; margin: 0; color: #1d1d1f; }
-
-        .hidden { display: none; } /* Для мгновенного скрытия если нужно */
+        .think-layer.active { max-height: 500px; opacity: 1; margin: 30px 0; }
+        .think-card { background: #f0f5ff; border-left: 4px solid var(--apple-blue); padding: 24px; border-radius: 0 12px 12px 0; }
+        .think-card h3 { color: var(--apple-blue); margin: 0 0 10px; font-size: 18px; }
+        .think-card p { font-size: 18px; margin: 0; }
     </style>
 
     <script>
@@ -170,12 +107,9 @@
         toggle.addEventListener('change', () => {
             layers.forEach(layer => {
                 if (toggle.checked) {
-                    layer.classList.remove('hidden');
-                    // Небольшая задержка для плавности анимации
-                    setTimeout(() => layer.classList.add('visible'), 10);
+                    layer.classList.add('active');
                 } else {
-                    layer.classList.remove('visible');
-                    setTimeout(() => layer.classList.add('hidden'), 500);
+                    layer.classList.remove('active');
                 }
             });
         });

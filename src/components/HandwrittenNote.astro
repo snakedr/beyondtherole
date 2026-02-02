@@ -5,27 +5,29 @@
 </div>
 
 <style>
-   .handwritten-note-container {
+    /* Прямой импорт внутри компонента как последний шанс */
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+    .handwritten-note-container {
         position: absolute;
         top: 25px;
         left: 20px;
-        z-index: 9999; /* Максимальный приоритет */
+        z-index: 9999;
         transform: rotate(-3deg);
         max-width: 250px;
+        pointer-events: none;
     }
 
     .note-text {
-        /* Добавляем !important для проверки */
+        /* Используем название без кавычек и с кавычками для верности */
         font-family: 'Dancing Script', cursive !important;
-        font-size: 1.4rem;
+        font-weight: 700 !important;
+        font-size: 1.5rem;
         color: #333;
         line-height: 1.2;
         margin: 0;
-        /* Убедимся, что это именно курсивный начертание */
-        font-style: normal; 
     }
 
-    /* Адаптив для мобильных */
     @media (max-width: 768px) {
         .handwritten-note-container {
             top: 10px;

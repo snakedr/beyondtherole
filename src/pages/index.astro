@@ -7,34 +7,6 @@ const description = "Глубокий разбор профессиональн�
 const ogImage = "/assets/og-image.png";
 ---
 
-<style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
-
-  .handwritten-note {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    transform: rotate(-3deg);
-    font-family: 'Dancing Script', cursive !important;
-    font-size: 1.2rem;
-    color: #444;
-    z-index: 999;
-    max-width: 240px;
-    line-height: 1.25;
-    opacity: 0.85;
-    pointer-events: none;
-  }
-
-  @media (max-width: 768px) {
-    .handwritten-note {
-      top: 10px;
-      left: 10px;
-      font-size: 1.05rem;
-      max-width: 180px;
-    }
-  }
-</style>
-
 <ArticleLayout title={title} description={description} ogImage={ogImage}>
     <!-- Toggle button and its styles/script, preserving its functionality -->
     <style is:inline>

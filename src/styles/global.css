@@ -1,7 +1,7 @@
-/* 1. Подключаем шрифт в самом верху файла */
-@import "@fontsource/dancing-script/400.css";
+/* Прямое подключение шрифта */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
-/* 2. Базовые стили страницы */
+/* Базовые настройки */
 body {
   margin: 0;
   background: #ffffff;
@@ -9,20 +9,22 @@ body {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 16px;
   line-height: 1.7;
-  position: relative; /* Чтобы заметка не улетала */
+  position: relative; /* Чтобы заметка позиционировалась относительно всей страницы */
 }
 
-/* 3. Рукописная заметка */
+/* Рукописная заметка */
 .handwritten-note {
   position: absolute;
   top: 20px;
   left: 20px;
   transform: rotate(-3deg);
-  font-family: 'Dancing Script', cursive; /* Теперь он точно подхватится */
+  /* Теперь шрифт точно подхватится из Google Fonts */
+  font-family: 'Dancing Script', cursive; 
   font-size: 1.2rem;
   color: #444;
   padding: 0;
   background: none;
+  box-shadow: none;
   z-index: 999;
   max-width: 240px;
   line-height: 1.25;
@@ -30,7 +32,7 @@ body {
   pointer-events: none;
 }
 
-/* 4. Секция Hero */
+/* Секция Hero */
 .hero {
   position: relative;
   min-height: 60vh;
@@ -75,7 +77,7 @@ body {
   color: #333;
 }
 
-/* 5. Контент статьи */
+/* Статья */
 .article {
   max-width: 720px;
   margin: 4rem auto 6rem;
@@ -99,12 +101,57 @@ p {
   margin-bottom: 1.25rem;
 }
 
+ul {
+  margin: 1.5rem 0 2rem 1.5rem;
+}
+
+li {
+  margin-bottom: 0.6rem;
+}
+
 a {
   color: #111;
   text-decoration: underline;
 }
 
-/* 6. Содержание (TOC) */
+/* Список литературы */
+.references ol {
+  padding-left: 1.5rem;
+}
+
+.references li {
+  margin-bottom: 1rem;
+  font-size: 0.95em;
+}
+
+/* Автотест */
+.autotest-form {
+  border: 1px solid #ddd;
+  padding: 1.5rem 2rem;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+}
+
+.autotest-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.autotest-item input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.25em;
+  margin-right: 0.75rem;
+  cursor: pointer;
+}
+
+/* Содержание (TOC) */
+html {
+  scroll-behavior: smooth;
+}
+
 .toc {
   max-width: 720px;
   margin: 0 auto 3rem auto;
@@ -117,6 +164,7 @@ a {
 .toc-title {
   font-size: 1.2rem;
   font-weight: bold;
+  margin-top: 0;
   margin-bottom: 1rem;
   border-bottom: 1px solid #ddd;
   padding-bottom: 0.75rem;
@@ -125,11 +173,13 @@ a {
 .toc-list {
   padding-left: 0;
   list-style-type: none;
+  margin: 0;
+  font-size: 1rem;
   columns: 2;
   column-gap: 2rem;
 }
 
-/* 7. Адаптивность */
+/* Адаптивность */
 @media (max-width: 768px) {
   .handwritten-note {
     top: 10px;

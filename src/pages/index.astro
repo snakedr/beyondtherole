@@ -2,6 +2,7 @@
 ---
 import ArticleLayout from '../layouts/ArticleLayout.astro';
 import NeuralMindMap from '../components/NeuralMindMap.astro';
+import ContentToggle from '../components/ContentToggle.astro';
 
 const title = "Когда работа не заканчивается дома: о профдеформации";
 const description = "Глубокий разбор профессиональной деформации и её влияния на близких. Узнайте, как рабочие привычки влияют на семью и что с этим делать.";
@@ -9,6 +10,7 @@ const ogImage = "/assets/og-image.png";
 ---
 
 <ArticleLayout title={title} description={description} ogImage={ogImage}>
+  <ContentToggle />
   <header class="relative min-h-[50vh] flex items-center justify-center text-center overflow-hidden py-8">
     <div class="hero-bg"></div>
     <div class="relative max-w-4xl p-8">

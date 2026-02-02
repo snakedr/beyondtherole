@@ -1,19 +1,104 @@
 ---
-// Финальный монолитный файл
+// Никаких импортов, никакой магии. Только чистый код.
 ---
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Когда работа не заканчивается дома</title>
+    <title>Beyond the Role</title>
+    <style>
+        :root {
+            --apple-green: #34c759;
+            --apple-blue: #007aff;
+            --bg-gray: #f5f5f7;
+            --text-main: #1d1d1f;
+            --text-gray: #86868b;
+        }
+
+        body {
+            margin: 0;
+            background: #fff;
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+
+        /* Hero Section */
+        .hero { padding: 100px 0 60px; text-align: center; background: var(--bg-gray); }
+        h1 { font-size: 48px; font-weight: 700; margin: 0; letter-spacing: -1px; line-height: 1.1; }
+        .hero-sub { font-size: 24px; color: var(--text-gray); margin-top: 15px; }
+
+        /* Apple Sticky Toggle */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+            border-bottom: 1px solid #d2d2d7;
+            z-index: 1000;
+        }
+
+        .toggle-container { display: flex; justify-content: center; align-items: center; gap: 12px; }
+        .label { font-size: 14px; font-weight: 600; color: var(--text-gray); text-transform: uppercase; }
+
+        .switch { position: relative; display: inline-block; width: 51px; height: 31px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; inset: 0;
+            background-color: #d2d2d7; transition: .4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 27px; width: 27px;
+            left: 2px; bottom: 2px; background-color: white;
+            transition: .4s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 50%;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+        input:checked + .slider { background-color: var(--apple-green); }
+        input:checked + .slider:before { transform: translateX(20px); }
+
+        /* Article Content */
+        .content { font-size: 21px; line-height: 1.55; padding: 40px 0; }
+        .content p { margin-bottom: 28px; }
+
+        /* Think Layers - Плавное раскрытие через Grid */
+        .think-layer {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            opacity: 0;
+            margin: 0;
+        }
+        
+        .think-layer.active {
+            grid-template-rows: 1fr;
+            opacity: 1;
+            margin: 30px 0;
+        }
+
+        .think-inner { overflow: hidden; }
+
+        .think-card {
+            background: #f0f5ff;
+            border-left: 4px solid var(--apple-blue);
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .think-card h3 { color: var(--apple-blue); margin: 0 0 10px; font-size: 18px; font-family: -apple-system; }
+        .think-card p { font-size: 18px; margin: 0; }
+    </style>
 </head>
 <body>
 
     <header class="hero">
         <div class="container">
             <h1>Когда работа не заканчивается дома</h1>
-            <p class="hero-sub">Профессиональная деформация, семья и тишину.</p>
+            <p class="hero-sub">Профессиональная деформация и цена экспертизы.</p>
         </div>
     </header>
 
@@ -22,7 +107,7 @@
             <span class="label">Lite</span>
             <label class="switch">
                 <input type="checkbox" id="think-toggle">
-                <span class="slider round"></span>
+                <span class="slider"></span>
             </label>
             <span class="label">Think</span>
         </div>
@@ -30,89 +115,48 @@
 
     <main class="container">
         <article class="content">
-            <p>Этот текст — попытка разложить по полкам явление, которое обычно остаётся безымянным. Речь о профессиональной деформации — как о медленном смещении способа мышления.</p>
+            <p>Этот текст — не статья. Это попытка разложить по полкам явление, которое обычно остаётся безымянным, но разрушает близость годами. Речь о профессиональной деформации — как о медленном смещении способа мышления.</p>
             
-            <div class="think-layer">
-                <div class="think-card">
-                    <h3>Слой Think: Нейробиология</h3>
-                    <p>Закон Хебба гласит: «Нейроны, разряжающиеся вместе, связываются вместе». Ваша рабочая личность — это hardware. Мозг оптимизируется под задачи.</p>
+            <div class="think-layer" id="layer-1">
+                <div class="think-inner">
+                    <div class="think-card">
+                        <h3>Уровень Think: Hardware</h3>
+                        <p>Закон Хебба: «Нейроны, разряжающиеся вместе, связываются вместе». Ваша рабочая личность — это hardware. Мозг физически оптимизирован под рабочие задачи, и переключение на «домашний» режим требует огромных энергозатрат.</p>
+                    </div>
                 </div>
             </div>
 
-            <p>Мы часто приносим домой не усталость, а рабочие алгоритмы. Учитель начинает учить партнера, менеджер — управлять бытом, юрист — строить обвинение.</p>
+            <p>Мы приносим домой рабочие алгоритмы. Учитель начинает учить партнера, менеджер — управлять бытом, юрист — строить обвинение в споре о немытой посуде. Профессионализм становится тюрьмой.</p>
 
-            <div class="think-layer">
-                <div class="think-card">
-                    <h3>Слой Think: Когнитивные схемы</h3>
-                    <p>Профессионализм формирует ригидные схемы. Мы перестаем видеть человека, а видим «кейс» или «задачу». Это когнитивный захват.</p>
+            <div class="think-layer" id="layer-2">
+                <div class="think-inner">
+                    <div class="think-card">
+                        <h3>Уровень Think: Когнитивная ригидность</h3>
+                        <p>Профессионализм — это формирование эффективных, но жестких схем. Мы перестаем видеть человека, а видим «кейс». Это когнитивный захват, где экспертиза убивает эмпатию.</p>
+                    </div>
                 </div>
             </div>
 
-            <p>Выход не в том, чтобы «забыть» о работе, а в том, чтобы легализовать свою уязвимость. Дома мы имеем право не знать ответов.</p>
+            <p>Выход — в легализации собственной уязвимости. Дома мы имеем право не знать, не контролировать и не быть экспертами. Тишина начинается там, где заканчиваются роли.</p>
         </article>
     </main>
 
-    <style>
-        :root {
-            --apple-green: #34c759;
-            --apple-blue: #007aff;
-            --text-gray: #86868b;
-        }
-
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: #1d1d1f;
-            line-height: 1.5;
-        }
-
-        .container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
-
-        /* Hero */
-        .hero { padding: 80px 0 40px; text-align: center; background: #f5f5f7; }
-        h1 { font-size: 48px; font-weight: 700; margin: 0; letter-spacing: -0.5px; }
-        .hero-sub { font-size: 24px; color: var(--text-gray); margin-top: 10px; }
-
-        /* Toggle */
-        .sticky-nav { position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); padding: 20px 0; border-bottom: 1px solid #d2d2d7; z-index: 100; }
-        .toggle-container { display: flex; justify-content: center; align-items: center; gap: 12px; }
-        .label { font-size: 14px; font-weight: 600; color: var(--text-gray); }
-
-        .switch { position: relative; display: inline-block; width: 51px; height: 31px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; inset: 0; background-color: #d2d2d7; transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 27px; width: 27px; left: 2px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; box-shadow: 0 3px 8px rgba(0,0,0,0.15); }
-        input:checked + .slider { background-color: var(--apple-green); }
-        input:checked + .slider:before { transform: translateX(20px); }
-
-        /* Content & Think Layers */
-        .content { padding: 40px 0; font-size: 21px; }
-        .think-layer { 
-            max-height: 0; 
-            opacity: 0; 
-            overflow: hidden; 
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
-            margin: 0;
-        }
-        .think-layer.active { max-height: 500px; opacity: 1; margin: 30px 0; }
-        .think-card { background: #f0f5ff; border-left: 4px solid var(--apple-blue); padding: 24px; border-radius: 0 12px 12px 0; }
-        .think-card h3 { color: var(--apple-blue); margin: 0 0 10px; font-size: 18px; }
-        .think-card p { font-size: 18px; margin: 0; }
-    </style>
-
-    <script>
+    <script is:inline>
+        // Чистый JS без обрывков
         const toggle = document.getElementById('think-toggle');
         const layers = document.querySelectorAll('.think-layer');
 
-        toggle.addEventListener('change', () => {
-            layers.forEach(layer => {
-                if (toggle.checked) {
-                    layer.classList.add('active');
-                } else {
-                    layer.classList.remove('active');
-                }
+        if (toggle) {
+            toggle.addEventListener('change', () => {
+                layers.forEach(layer => {
+                    if (toggle.checked) {
+                        layer.classList.add('active');
+                    } else {
+                        layer.classList.remove('active');
+                    }
+                });
             });
-        });
+        }
     </script>
 </body>
 </html>

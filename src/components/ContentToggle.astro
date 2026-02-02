@@ -1,36 +1,24 @@
----
----
-<button id="reality-toggle">
-    <span id="toggle-text">Показать 'Think'</span>
-</button>
-
 <script>
-    document.addEventListener('astro:page-load', () => {
-        const toggleButton = document.getElementById('reality-toggle');
-        const toggleText = document.getElementById('toggle-text');
-        // No longer need contentWrapper
+  const toggle = document.querySelector('#content-toggle-checkbox'); // ID вашего чекбокса в компоненте ContentToggle
+  const thinkLayers = document.querySelectorAll('.think-layer');
+  const liteLayers = document.querySelectorAll('.lite-content');
 
-        if (!toggleButton || !toggleText) {
-            console.error('Content toggle elements not found.');
-            return;
+  if (toggle) {
+    toggle.addEventListener('change', (e) => {
+      const isThinkMode = e.target.checked;
+
+      thinkLayers.forEach(layer => {
+        if (isThinkMode) {
+          layer.classList.remove('hidden');
+        } else {
+          layer.classList.add('hidden');
         }
+      });
 
-        function updateButton(isThinkShown) {
-            if (isThinkShown) {
-                document.body.classList.add('is-think');
-                toggleText.textContent = "Скрыть 'Think'";
-            } else {
-                document.body.classList.remove('is-think');
-                toggleText.textContent = "Показать 'Think'";
-            }
-        }
-
-        // Default to showing Lite content
-        updateButton(false);
-
-        toggleButton.addEventListener('click', () => {
-            const isCurrentlyThink = document.body.classList.contains('is-think');
-            updateButton(!isCurrentlyThink);
-        });
+      // Опционально: можно менять стиль или прозрачность lite-контента в режиме Think
+      liteLayers.forEach(layer => {
+        layer.style.opacity = isThinkMode ? '0.7' : '1';
+      });
     });
+  }
 </script>

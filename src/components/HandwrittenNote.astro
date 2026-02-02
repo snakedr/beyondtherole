@@ -5,27 +5,24 @@
 </div>
 
 <style>
-    /* Стили применяются только к этому компоненту */
-    .handwritten-note-container {
+   .handwritten-note-container {
         position: absolute;
-        top: 20px;
+        top: 25px;
         left: 20px;
-        z-index: 1000;
+        z-index: 9999; /* Максимальный приоритет */
         transform: rotate(-3deg);
-        pointer-events: none; /* Чтобы можно было кликать сквозь записку */
         max-width: 250px;
-        user-select: none;
     }
 
     .note-text {
-        /* Шрифт подтянется из Layout */
-        font-family: 'Dancing Script', cursive;
-        font-size: 1.3rem;
-        color: #444;
-        line-height: 1.25;
+        /* Добавляем !important для проверки */
+        font-family: 'Dancing Script', cursive !important;
+        font-size: 1.4rem;
+        color: #333;
+        line-height: 1.2;
         margin: 0;
-        opacity: 0.9;
-        text-shadow: 1px 1px 0px rgba(255,255,255,0.5); /* Легкая тень для читаемости */
+        /* Убедимся, что это именно курсивный начертание */
+        font-style: normal; 
     }
 
     /* Адаптив для мобильных */

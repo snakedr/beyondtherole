@@ -1,15 +1,39 @@
+/* 1. Подключаем шрифт в самом верху файла */
+@import "@fontsource/dancing-script/400.css";
+
+/* 2. Базовые стили страницы */
 body {
   margin: 0;
   background: #ffffff;
   color: #111;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 16px; /* Reduced base font size */
+  font-size: 16px;
   line-height: 1.7;
+  position: relative; /* Чтобы заметка не улетала */
 }
 
+/* 3. Рукописная заметка */
+.handwritten-note {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transform: rotate(-3deg);
+  font-family: 'Dancing Script', cursive; /* Теперь он точно подхватится */
+  font-size: 1.2rem;
+  color: #444;
+  padding: 0;
+  background: none;
+  z-index: 999;
+  max-width: 240px;
+  line-height: 1.25;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* 4. Секция Hero */
 .hero {
   position: relative;
-  min-height: 60vh; /* Reduced height slightly */
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,34 +61,36 @@ body {
   position: relative;
   max-width: 800px;
   padding: 2rem;
+  z-index: 1;
 }
 
 .hero-content h1 {
-  font-size: 3rem; /* Adjusted relative to new base */
+  font-size: 3rem;
   line-height: 1.15;
   margin-bottom: 1rem;
 }
 
 .subtitle {
-  font-size: 1.25rem; /* Adjusted relative to new base */
+  font-size: 1.25rem;
   color: #333;
 }
 
+/* 5. Контент статьи */
 .article {
-  max-width: 720px; /* Slightly adjusted for new font size */
+  max-width: 720px;
   margin: 4rem auto 6rem;
   padding: 0 1.5rem;
 }
 
 h2 {
-  font-size: 2rem; /* Adjusted */
+  font-size: 2rem;
   margin-top: 3.5rem;
   margin-bottom: 1.2rem;
-  scroll-margin-top: 2rem; /* Adds space above anchor when jumping from TOC */
+  scroll-margin-top: 2rem;
 }
 
 h3 {
-  font-size: 1.5rem; /* Adjusted */
+  font-size: 1.5rem;
   margin-top: 2.5rem;
   margin-bottom: 0.5rem;
 }
@@ -73,85 +99,15 @@ p {
   margin-bottom: 1.25rem;
 }
 
-ul {
-  margin: 1.5rem 0 2rem 1.5rem;
-}
-
-li {
-  margin-bottom: 0.6rem;
-}
-
 a {
   color: #111;
   text-decoration: underline;
 }
 
-.references ol {
-  padding-left: 1.5rem;
-}
-
-.references li {
-  margin-bottom: 1rem;
-  font-size: 0.95em;
-}
-
-/* Autotest Styles */
-.autotest-form {
-  border: 1px solid #ddd;
-  padding: 1.5rem 2rem;
-  border-radius: 4px;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.autotest-item {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-}
-
-.autotest-item:last-child {
-  margin-bottom: 0;
-}
-
-.autotest-item input[type="checkbox"] {
-  flex-shrink: 0;
-  width: 1.25em;
-  height: 1.25em;
-  margin-top: 0.25em;
-  margin-right: 0.75rem;
-  cursor: pointer;
-}
-
-.autotest-item label {
-  cursor: pointer;
-}
-
-.autotest-result {
-  font-weight: bold;
-  text-align: center;
-  font-size: 1.2rem;
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background: #f9f9f9;
-  border: 1px solid #eee;
-  border-radius: 4px;
-}
-
-/* Table of Contents Styles */
-html {
-  scroll-behavior: smooth;
-}
-
+/* 6. Содержание (TOC) */
 .toc {
-  max-width: 720px; /* Match article width */
-  margin: 0 auto 3rem auto; /* Center it and add space below */
+  max-width: 720px;
+  margin: 0 auto 3rem auto;
   padding: 2rem;
   border: 1px solid #eee;
   border-radius: 8px;
@@ -159,9 +115,8 @@ html {
 }
 
 .toc-title {
-  font-size: 1.2rem; /* Adjusted */
+  font-size: 1.2rem;
   font-weight: bold;
-  margin-top: 0;
   margin-bottom: 1rem;
   border-bottom: 1px solid #ddd;
   padding-bottom: 0.75rem;
@@ -170,39 +125,24 @@ html {
 .toc-list {
   padding-left: 0;
   list-style-type: none;
-  margin: 0;
-  font-size: 1rem;
-  columns: 2; /* Create two columns for a more compact look */
+  columns: 2;
   column-gap: 2rem;
 }
 
-.toc-list li {
-  margin-bottom: 0.6rem;
-  line-height: 1.5;
-}
-
-.toc-list a {
-  text-decoration: none;
-  color: #555;
-}
-
-.toc-list a:hover {
-  text-decoration: underline;
-  color: #111;
-}
-
-/* Remove complex media queries for TOC positioning */
-
+/* 7. Адаптивность */
 @media (max-width: 768px) {
-  body {
-    font-size: 16px; /* Keep it consistent */
+  .handwritten-note {
+    top: 10px;
+    left: 10px;
+    font-size: 1.05rem;
+    max-width: 180px;
   }
 
   .hero-content h1 {
-    font-size: 2.2rem; /* Adjust for mobile */
+    font-size: 2.2rem;
   }
 
   .toc-list {
-    columns: 1; /* Single column on smaller screens */
+    columns: 1;
   }
 }
